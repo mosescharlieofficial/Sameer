@@ -383,6 +383,7 @@
             text-decoration: none;
             color: var(--dark);
             transition: transform 0.3s ease;
+            min-width: 100px;
         }
         
         .social-icon:hover {
@@ -475,6 +476,30 @@
             
             .project-container {
                 flex-direction: column;
+            }
+            
+            .social-icons {
+                gap: 15px;
+            }
+            
+            .social-icon {
+                min-width: 80px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .social-icons {
+                gap: 10px;
+            }
+            
+            .social-icon {
+                min-width: 70px;
+            }
+            
+            .social-icon i {
+                width: 60px;
+                height: 60px;
+                font-size: 1.7rem;
             }
         }
     </style>
@@ -703,6 +728,10 @@
                 <a href="https://github.com/mosescharlieofficial/" class="social-icon" target="_blank">
                     <i class="fab fa-github"></i>
                     <span class="social-name">GitHub</span>
+                </a>
+                <a href="https://www.behance.net/mosescharlieyalla" class="social-icon" target="_blank">
+                    <i class="fab fa-behance"></i>
+                    <span class="social-name">Behance</span>
                 </a>
                 <a href="https://www.instagram.com/mosescharlieofficial/" class="social-icon" target="_blank">
                     <i class="fab fa-instagram"></i>
