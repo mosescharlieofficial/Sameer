@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEC-MEC Review | 6-Month Progress Report</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #1a4b8c;
+            --secondary: #2c6cb0;
+            --accent: #4a90e2;
+            --light: #f5f9ff;
+            --dark: #0a2a53;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a4b8c" opacity="0.05"/></svg>');
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--gray);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+        }
+        
+        /* Presentation Section */
+        .presentation {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .presentation-container {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .presentation-embed {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .presentation-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+        }
+        
+        /* Reports Section */
+        .reports {
+            padding: 4rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .report-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .report-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .report-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .report-body {
+            padding: 1.5rem;
+        }
+        
+        .report-body ul {
+            list-style-type: none;
+        }
+        
+        .report-body li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .report-body li:last-child {
+            border-bottom: none;
+        }
+        
+        .report-icon {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .report-actions {
+            padding: 0 1.5rem 1.5rem;
+        }
+        
+        /* Timeline Section */
+        .timeline {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--light-gray);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 0 4px var(--accent);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .presentation-embed {
+                height: 400px;
+            }
+            
+            .timeline-container::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-content::after {
+                left: 20px;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        📊
+                    </div>
+                    <div class="logo-text">
+                        <h1>TEC-MEC REVIEW</h1>
+                        <p>6-Month Progress Report</p>
+                    </div>
+                </div>
+                <div class="header-info">
+                    <p>Evaluation Date: <strong>Today</strong></p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Comprehensive 6-Month Technical Review</h2>
+            <p>Presenting a detailed overview of progress, achievements, and future roadmap for the TEC-MEC evaluation committee.</p>
+            <a href="#presentation" class="cta-button">View Presentation</a>
+        </div>
+    </section>
+
+    <!-- Presentation Section -->
+    <section class="presentation" id="presentation">
+        <div class="container">
+            <h2 class="section-title">Final Presentation</h2>
+            <div class="presentation-container">
+                <iframe class="presentation-embed" src="https://www.canva.com/design/DAG29fpr19c/yrzpmDkrVgUHNurR73n-hg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                <div class="presentation-actions">
+                    <a href="https://www.canva.com/design/DAG29fpr19c/yrzpmDkrVgUHNurR73n-hg/view?utm_content=DAG29fpr19c&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h4e2b7a3424" class="btn btn-primary" target="_blank">
+                        <span>Open in Canva</span>
+                    </a>
+                    <a href="#" class="btn btn-outline">
+                        <span>Download PDF</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reports Section -->
+    <section class="reports">
+        <div class="container">
+            <h2 class="section-title">Monthly Progress Reports</h2>
+            <div class="reports-grid">
+                <!-- Month 1 -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <h3>Month 1</h3>
+                    </div>
+                    <div class="report-body">
+                        <ul>
+                            <li><span class="report-icon">✓</span> Project Scope Defined</li>
+                            <li><span class="report-icon">✓</span> Resource Allocation</li>
+                            <li><span class="report-icon">✓</span> Initial Research</li>
+                            <li><span class="report-icon">✓</span> Timeline Established</li>
+                        </ul>
+                    </div>
+                    <div class="report-actions">
+                        <a href="June.pdf" class="btn btn-outline">View Full Report</a>
+                    </div>
+                </div>
+                
+                <!-- Month 2 -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <h3>Month 2</h3>
+                    </div>
+                    <div class="report-body">
+                        <ul>
+                            <li><span class="report-icon">✓</span> Prototype Development</li>
+                            <li><span class="report-icon">✓</span> Testing Framework</li>
+                            <li><span class="report-icon">✓</span> Data Collection</li>
+                            <li><span class="report-icon">✓</span> Initial Analysis</li>
+                        </ul>
+                    </div>
+                    <div class="report-actions">
+                        <a href="July.pdf" class="btn btn-outline">View Full Report</a>
+                    </div>
+                </div>
+                
+                <!-- Month 3 -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <h3>Month 3</h3>
+                    </div>
+                    <div class="report-body">
+                        <ul>
+                            <li><span class="report-icon">✓</span> Core Features Implemented</li>
+                            <li><span class="report-icon">✓</span> Performance Testing</li>
+                            <li><span class="report-icon">✓</span> Documentation Started</li>
+                            <li><span class="report-icon">✓</span> Mid-term Review</li>
+                        </ul>
+                    </div>
+                    <div class="report-actions">
+                        <a href="August.pdf" class="btn btn-outline">View Full Report</a>
+                    </div>
+                </div>
+                
+                <!-- Month 4 -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <h3>Month 4</h3>
+                    </div>
+                    <div class="report-body">
+                        <ul>
+                            <li><span class="report-icon">✓</span> Feature Enhancement</li>
+                            <li><span class="report-icon">✓</span> Bug Fixes</li>
+                            <li><span class="report-icon">✓</span> User Feedback Integration</li>
+                            <li><span class="report-icon">✓</span> Performance Optimization</li>
+                        </ul>
+                    </div>
+                    <div class="report-actions">
+                        <a href="September.pdf" class="btn btn-outline">View Full Report</a>
+                    </div>
+                </div>
+                
+                <!-- Month 5 -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <h3>Month 5</h3>
+                    </div>
+                    <div class="report-body">
+                        <ul>
+                            <li><span class="report-icon">✓</span> Comprehensive Testing</li>
+                            <li><span class="report-icon">✓</span> Security Audit</li>
+                            <li><span class="report-icon">✓</span> User Acceptance Testing</li>
+                            <li><span class="report-icon">✓</span> Documentation Finalized</li>
+                        </ul>
+                    </div>
+                    <div class="report-actions">
+                        <a href="October.pdf" class="btn btn-outline">View Full Report</a>
+                    </div>
+                </div>
+                
+                <!-- Month 6 -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <h3>Month 6</h3>
+                    </div>
+                    <div class="report-body">
+                        <ul>
+                            <li><span class="report-icon">✓</span> Final Implementation</li>
+                            <li><span class="report-icon">✓</span> Performance Metrics</li>
+                            <li><span class="report-icon">✓</span> Review Preparation</li>
+                            <li><span class="report-icon">✓</span> Presentation Development</li>
+                        </ul>
+                    </div>
+                    <div class="report-actions">
+                        <a href="October.pdf" class="btn btn-outline">View Full Report</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TEC-MEC REVIEW</h3>
+                    <p>Comprehensive 6-month technical evaluation and progress report.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#presentation">Presentation</a>
+                    <a href="#reports">Monthly Reports</a>
+                    <a href="#timeline">Project Timeline</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: mosescharlieofficial@gmail.com</p>
+                    <p>Phone: +91-6301039924</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TEC-MEC Review. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
